@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: UserPortal
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: fabiomonfardini
+Implementation-Vendor-Id: com.bank.user
+Build-Jdk: 1.8.0_74
+Implementation-URL: http://projects.spring.io/spring-boot/UserPortal/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
