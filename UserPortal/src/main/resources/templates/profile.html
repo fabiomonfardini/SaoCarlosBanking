@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/header :: common-header"/>
+<body roleId="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<head th:replace="common/header :: navbar"/>
+<div class="container">
+    <div class="row main">
+        <div class="col-md-6">
+            <h2 class="title">Minha conta</h2>
+            <hr/>
+            <form method="post" th:action="@{/user/profile}">
+                <input type="hidden" name="id" th:value="${user.userId}"/>
+
+                <div class="form-group">
+                    <label for="firstName">Primeiro nome</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" th:value="${user.firstName}" id="firstName"
+                                   name="firstName" roleId="firstname" placeholder="Digite seu nome"
+                                   required="required"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName" class="cols-sm-2 control-label">Sobrenome</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" th:value="${user.lastName}" id="lastName"
+                                   name="lastName" roleId="lastName" placeholder="Digite seu sobrenome"
+                                   required="required"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone" class="cols-sm-2 control-label">Telefone</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-phone fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" th:value="${user.phone}" id="phone" name="phone"
+                                   roleId="phone" placeholder="(xx)xxxxx-xxxx" required="required"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="cols-sm-2 control-label">Seu email</label><span
+                        class="bg-danger pull-right" th:if="${emailExists}">Email ja existe</span>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa"
+                                                                   aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" th:value="${user.email}" id="email" name="email"
+                                   roleId="email" placeholder="Digite seu Email" required="required"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="username" class="cols-sm-2 control-label">Username</label><span
+                        class="bg-danger pull-right" th:if="${usernameExists}">Username ja existe</span>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" th:value="${user.username}" id="username"
+                                   name="username" roleId="username" placeholder="Digite seu Username"
+                                   required="required"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <button type="submit" class="btn btn-primary btn-block ">Alterar dados
+                    </button>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-md-6">
+            <div class="panel-heading">
+                <div class="panel-title text-center">
+                    <h1 class="title">Informacoes sobre sua conta</h1>
+                    <hr/>
+                </div>
+                <table class="responstable">
+                    <tr>
+                        <th>Numero da sua Conta Corrente</th>
+                        <th>Numero da sua Conta Poupanca</th>
+                    </tr>
+
+                    <tr>
+                        <td data-th-text="${user.primaryAccount.accountNumber}">...</td>
+                        <td data-th-text="${user.savingsAccount.accountNumber}">...</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div th:replace="common/header :: body-bottom-scripts"/>
+
+</body>
+</html>
